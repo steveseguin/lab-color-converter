@@ -2,6 +2,8 @@
 
 A sophisticated web application that converts CIE LAB color values to RGB with advanced features including lighting condition simulations, intelligent color naming, and blend detection.
 
+Use it now: https://steveseguin.github.io/lab-color-converter/
+
 ## Features
 
 ### Core Functionality
