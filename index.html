@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB Color Converter - Advanced Color Analysis</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LAB Color Converter</h1>
+            <p class="subtitle">Convert CIE LAB colors to RGB with lighting simulations</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <h2>Enter LAB Values</h2>
+                <div class="lab-inputs">
+                    <div class="input-group">
+                        <label for="l-value">L* (Lightness)</label>
+                        <input type="number" id="l-value" min="0" max="100" step="0.1" value="50" placeholder="0-100">
+                    </div>
+                    <div class="input-group">
+                        <label for="a-value">a* (Green-Red)</label>
+                        <input type="number" id="a-value" min="-128" max="127" step="0.1" value="0" placeholder="-128 to 127">
+                    </div>
+                    <div class="input-group">
+                        <label for="b-value">b* (Blue-Yellow)</label>
+                        <input type="number" id="b-value" min="-128" max="127" step="0.1" value="0" placeholder="-128 to 127">
+                    </div>
+                </div>
+                <button id="convert-btn" class="convert-button">Convert Color</button>
+            </section>
+
+            <section class="results-section" id="results" style="display: none;">
+                <div class="primary-color">
+                    <h2>Primary Color</h2>
+                    <div class="color-display" id="primary-swatch"></div>
+                    <div class="color-info">
+                        <p class="lab-values" id="lab-display"></p>
+                        <p class="rgb-values" id="rgb-display"></p>
+                        <p class="hex-value" id="hex-display"></p>
+                    </div>
+                </div>
+
+                <div class="lighting-conditions">
+                    <h2>Under Different Lighting</h2>
+                    <div class="lighting-grid" id="lighting-grid">
+                        <!-- Lighting swatches will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="color-description">
+                    <h2>Color Description</h2>
+                    <div class="color-name" id="color-name"></div>
+                    <p class="color-text" id="color-description"></p>
+                    <div class="color-components" id="color-components"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>CIE LAB Color Space &bull; D50 Illuminant Reference</p>
+        </footer>
+    </div>
+
+    <script src="js/color-names.js"></script>
+    <script src="js/lab-converter.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
