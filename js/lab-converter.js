@@ -103,10 +103,17 @@ class LabConverter {
 
     // Check if color is out of gamut
     isInGamut(L, a, b) {
-        const rgb = this.labToRgb(L, a, b);
-        return rgb.r >= 0 && rgb.r <= 255 && 
-               rgb.g >= 0 && rgb.g <= 255 && 
-               rgb.b >= 0 && rgb.b <= 255;
+        const { X, Y, Z } = this.labToXyz(L, a, b);
+        // Check linear channels before xyzToRgb rounds and clips them.
+        const channels = [
+            (X * 3.1338561 - Y * 1.6168667 - Z * 0.4906146) / 100,
+            (-X * 0.9787684 + Y * 1.9161415 + Z * 0.0334540) / 100,
+            (X * 0.0719453 - Y * 0.2289914 + Z * 1.4052427) / 100
+        ];
+        // The rounded conversion matrix can put boundary colors just outside 0-1.
+        const tolerance = 1e-6;
+        return channels.every(channel => Number.isFinite(channel) &&
+            channel >= -tolerance && channel <= 1 + tolerance);
     }
 }
 
